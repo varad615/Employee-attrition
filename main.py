@@ -109,11 +109,14 @@ attrition = st.sidebar.multiselect(
     "Employee Number",
     options=ndf["EmployeeNumber"].unique()
 )
-
-st.sidebar.write('You selected:', attrition)
+num_yrs = st.sidebar.slider('Select number values', min_value=1, max_value=50)
+st.sidebar.write('Values:', num_yrs)
 ds = ndf.query(
     "EmployeeNumber == @attrition"
 )
 ds.drop(columns=["Education", "Age", "Department", "JobLevel", "JobRole", "JobSatisfaction", "MaritalStatus", "MonthlyRate", "NumCompaniesWorked", "OverTime",
         "PercentSalaryHike", "PerformanceRating", "Work Environment", "Work Accident", "TotalWorkingYears", "TrainingTimesLastYear", "WorkLifeBalance", "YearsAtCompany", "YearsInCurrentRole", "YearsSinceLastPromotion", "YearsWithCurrManager", "Gender", "EducationField", "EnvironmentSatisfaction", "DistanceFromHome", "JobInvolvement"], axis=1, inplace=True)
-st.dataframe(ds)
+def color_coding(row):
+    return ['background-color:green'] * len(
+        row) if row.Attrition == 'No' else ['background-color:red'] * len(row)
+st.dataframe(ds.style.apply(color_coding, axis=1))
