@@ -105,12 +105,12 @@ sn.heatmap(cm, annot=True, fmt='d')
 plt.xlabel('Predicted')
 plt.ylabel('Truth')
 
-st.sidebar.header("Employee Attrition")
+st.sidebar.header("Search by employee number")
 attrition = st.sidebar.multiselect(
     "Employee Number",
     options=ndf["EmployeeNumber"].unique()
 )
-amount = st.sidebar.slider('NUmber of results', 0, 130)
+
 
 # num_yrs = st.sidebar.slider('Select number values', min_value=1, max_value=50)
 # st.sidebar.write('Values:', num_yrs)
@@ -128,7 +128,3 @@ def color_coding(row):
 
 st.dataframe(ds.style.apply(color_coding, axis=1))
 
-ndf.drop(columns=["Education", "Age", "Department", "JobLevel", "JobRole", "JobSatisfaction", "MaritalStatus", "MonthlyRate", "NumCompaniesWorked", "OverTime",
-                  "PercentSalaryHike", "PerformanceRating", "Work Environment", "Work Accident", "TotalWorkingYears", "TrainingTimesLastYear", "WorkLifeBalance", "YearsAtCompany", "YearsInCurrentRole", "YearsSinceLastPromotion", "YearsWithCurrManager", "Gender", "EducationField", "EnvironmentSatisfaction", "DistanceFromHome", "JobInvolvement"], axis=1, inplace=True)
-
-st.dataframe(ndf.head(amount))
