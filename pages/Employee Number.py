@@ -16,6 +16,7 @@ sheet_name = 'DATA'
 df = pd.read_csv('data.csv')
 ndf = pd.read_csv('data.csv')
 
+st.write("# Employee Attrition Prediction using ANN ")
 
 df.drop('EmployeeNumber', axis='columns', inplace=True)
 
@@ -126,5 +127,6 @@ def color_coding(row):
         row) if row.Attrition == 'No' else ['background-color:red'] * len(row)
 
 
-st.dataframe(ds.style.apply(color_coding, axis=1))
 
+st.dataframe(ds.style.apply(color_coding, axis=1),
+             use_container_width=True)

@@ -16,6 +16,7 @@ sheet_name = 'DATA'
 df = pd.read_csv('data.csv')
 ndf = pd.read_csv('data.csv')
 
+st.write("# Employee Attrition Prediction using ANN ")
 
 df.drop('EmployeeNumber', axis='columns', inplace=True)
 
@@ -113,4 +114,8 @@ amount = st.sidebar.slider('NUmber of results', 0, 1470)
 ndf.drop(columns=["Education", "Age", "Department", "JobLevel", "JobRole", "JobSatisfaction", "MaritalStatus", "MonthlyRate", "NumCompaniesWorked", "OverTime",
                   "PercentSalaryHike", "PerformanceRating", "Work Environment", "Work Accident", "TotalWorkingYears", "TrainingTimesLastYear", "WorkLifeBalance", "YearsAtCompany", "YearsInCurrentRole", "YearsSinceLastPromotion", "YearsWithCurrManager", "Gender", "EducationField", "EnvironmentSatisfaction", "DistanceFromHome", "JobInvolvement"], axis=1, inplace=True)
 
-st.dataframe(ndf.head(amount))
+def color_coding(row):
+    return ['background-color:green'] * len(
+        row) if row.Attrition == 'No' else ['background-color:red'] * len(row)
+
+st.dataframe(ndf.head(amount).style.apply(color_coding, axis=1),use_container_width=True)
