@@ -4,5 +4,5 @@
 pip freeze > requirements.txt
 ```
 ```
-streamlit run main.py
+streamlit run Welcome.py
 ```
