@@ -109,16 +109,19 @@ plt.ylabel('Truth')
 st.sidebar.header("Search by employee number")
 attrition = st.sidebar.multiselect(
     "Employee Number",
-    options=ndf["EmployeeNumber"].unique()
+    options=ndf["Attrition"].unique()
 )
 
 
 # num_yrs = st.sidebar.slider('Select number values', min_value=1, max_value=50)
 # st.sidebar.write('Values:', num_yrs)
 ds = ndf.query(
-    "EmployeeNumber == @attrition"
+    "Attrition == @attrition"
 )
 ds.drop(columns=["Education", "Age", "Department", "JobLevel", "JobRole", "JobSatisfaction", "MaritalStatus", "MonthlyRate", "NumCompaniesWorked", "OverTime",
+        "PercentSalaryHike", "PerformanceRating", "Work Environment", "Work Accident", "TotalWorkingYears", "TrainingTimesLastYear", "WorkLifeBalance", "YearsAtCompany", "YearsInCurrentRole", "YearsSinceLastPromotion", "YearsWithCurrManager", "Gender", "EducationField", "EnvironmentSatisfaction", "DistanceFromHome", "JobInvolvement"], axis=1, inplace=True)
+dy = ndf
+dy.drop(columns=["Education", "Age", "Department", "JobLevel", "JobRole", "JobSatisfaction", "MaritalStatus", "MonthlyRate", "NumCompaniesWorked", "OverTime",
         "PercentSalaryHike", "PerformanceRating", "Work Environment", "Work Accident", "TotalWorkingYears", "TrainingTimesLastYear", "WorkLifeBalance", "YearsAtCompany", "YearsInCurrentRole", "YearsSinceLastPromotion", "YearsWithCurrManager", "Gender", "EducationField", "EnvironmentSatisfaction", "DistanceFromHome", "JobInvolvement"], axis=1, inplace=True)
 
 
@@ -129,4 +132,3 @@ def color_coding(row):
 
 st.dataframe(ds.style.apply(color_coding, axis=1),
              use_container_width=True)
-
