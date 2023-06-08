@@ -44,6 +44,3 @@ Please ensure that your contributions align with the project's coding style and 
 ## License
 Employee Attrition is licensed under the [MIT License](https://opensource.org/licenses/MIT). See the `LICENSE` file for more information.
 
-## Contact
-For any questions or inquiries, please reach out to [email protected]
-
