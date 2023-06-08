@@ -1,6 +1,6 @@
 # Employee Attrition
 
-![Employee Attrition](https://github.com/username/repo/blob/main/employee_attrition_logo.png)
+![Employee Attrition](https://github.com/varad615/Employee-attrition/blob/main/Employee-Attrition.png)
 
 ## Overview
 Employee Attrition is a tool designed to help organizations understand and manage employee turnover. By analyzing relevant data, the tool provides insights into attrition trends, identifies factors contributing to employee churn, and enables effective retention strategies. This project is built using Streamlit, a powerful Python library for creating interactive web applications.
